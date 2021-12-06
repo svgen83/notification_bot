@@ -17,14 +17,11 @@ Write it like this:
 
 ```
 DEVMAN_TOKEN="Devman token"
-
 ```
 Also, in the .env file, you must register the telegram bot token and your own chat-id:
 ```
 TG_TOKEN="Telegram bot token"
-
 TG_CHAT_ID="own chat-id"
-
 ```
 
 You will receive a token when registering a bot. It says here [how to register a telegram bot](https://way23.ru/%D1%80%D0%B5%D0%B3%D0%B8%D1%81%D1%82%D1%80%D0%B0%D1%86%D0%B8%D1%8F-%D0%B1%D0%BE%D1%82%D0%B0-%D0%B2-telegram/).
