@@ -10,8 +10,12 @@ from dotenv import load_dotenv
 def choose_message(reply):
     lesson_title = '"' + reply['new_attempts'][0]["lesson_title"] + '"'
     lesson_url = reply['new_attempts'][0]['lesson_url']
-    positive_message = 'У вас проверили работу' + '\n' + lesson_title + 'Преподавателю всё понравилось, можно приступать к следующему уроку' + '\n' + lesson_url
-    negative_message = 'У вас проверили работу ' + lesson_title + '\n' + 'К сожалению, в работе нашлись ошибки ' + '\n' + lesson_url
+    positive_message = 'У вас проверили работу' + '\n' + lesson_title +
+    'Преподавателю всё понравилось, можно приступать к следующему уроку' +
+    '\n' + lesson_url
+    negative_message = 'У вас проверили работу ' + lesson_title + '\n' +
+    'К сожалению, в работе нашлись ошибки ' +
+    '\n' + lesson_url
     if reply['new_attempts'][0]['is_negative']:
         message = negative_message
     else:
@@ -26,7 +30,7 @@ if __name__ == '__main__':
     TG_TOKEN = os.getenv('TG_TOKEN')
     TG_CHAT_ID = os.getenv('TG_CHAT_ID')
     DEVMAN_TOKEN = os.getenv('DEVMAN_TOKEN')
-    
+
     lp_url = 'https://dvmn.org/api/long_polling/'
     headers = {'Authorization': DEVMAN_TOKEN}
     timer = 90
