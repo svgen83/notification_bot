@@ -16,14 +16,14 @@ You can get it in the [section with API documentation] (https://dvmn.org/api/doc
 Write it like this:
 
 ```
-DEVMAN_TOKEN="Токен Девмана"
+DEVMAN_TOKEN="Devman token"
 
 ```
 Also, in the .env file, you must register the telegram bot token and your own chat-id:
 ```
-TG_TOKEN="Токен телеграмм-бота"
+TG_TOKEN="Telegram bot token"
 
-TG_CHAT_ID="собственный chat-id"
+TG_CHAT_ID="own chat-id"
 
 ```
 
