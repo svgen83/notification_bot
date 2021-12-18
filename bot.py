@@ -10,16 +10,18 @@ from dotenv import load_dotenv
 def choose_message(reply):
     lesson_title = '"' + reply['new_attempts'][0]["lesson_title"] + '"'
     lesson_url = reply['new_attempts'][0]['lesson_url']
-    positive_message = 'У вас проверили работу' + '\n' + lesson_title +
-    'Преподавателю всё понравилось, можно приступать к следующему уроку' +
-    '\n' + lesson_url
-    negative_message = 'У вас проверили работу ' + lesson_title + '\n' +
-    'К сожалению, в работе нашлись ошибки ' +
-    '\n' + lesson_url
+    positive_msg_template = f'''У вас проверили работу 
+    {lesson_title}
+    Преподавателю всё понравилось, можно приступать к следующему уроку
+    {lesson_url}'''
+    negative_msg_template = f'''У вас проверили работу
+    {lesson_title}
+    К сожалению, в работе нашлись ошибки
+    {lesson_url}'''
     if reply['new_attempts'][0]['is_negative']:
-        message = negative_message
+        message = negative_msg_template
     else:
-        message = positive_message
+        message = positive_msg_template
     return message
 
 
