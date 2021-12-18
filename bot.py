@@ -10,24 +10,24 @@ from dotenv import load_dotenv
 
 
 def create_message(reply):
-    lesson_title = reply['new_attempts'][0]["lesson_title"]
-    lesson_url = reply['new_attempts'][0]['lesson_url']
-    positive_msg_template = f'''
-    У вас проверили работу 
-    {lesson_title}
-    Преподавателю всё понравилось, можно приступать к следующему уроку
-    {lesson_url}
-    '''
-    negative_msg_template = f'''
+    for key, value in reply.items():
+      lesson_title = ["lesson_title"]
+      lesson_url = ['lesson_url']
+      negativ = ['is_negative']
+    if negativ:
+      message = f'''
     У вас проверили работу
     {lesson_title}
     К сожалению, в работе нашлись ошибки
     {lesson_url}
     '''
-    if reply['new_attempts'][0]['is_negative']:
-        message = negative_msg_template
     else:
-        message = positive_msg_template
+      message = f'''
+    У вас проверили работу 
+    {lesson_title}
+    Преподавателю всё понравилось, можно приступать к следующему уроку
+    {lesson_url}
+    '''
     return message
     
     
@@ -69,7 +69,7 @@ if __name__ == '__main__':
             message = create_message(reply)
             bot.send_message(chat_id=TG_CHAT_ID, text=message)
         except requests.exceptions.ReadTimeout:
-            print('новых работ нет')
+            time.sleep(timer)
         except requests.exceptions.ConnectionError:
             print("Отсутствует интернет-подключение")
             time.sleep(timer)
