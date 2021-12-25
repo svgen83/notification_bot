@@ -11,10 +11,12 @@ from dotenv import load_dotenv
 
 def create_message(reply):
     for key, value in reply.items():
+        new_attempts = reply['new_attempts']
+    for new_attempt in new_attempts.items():
         lesson_title = ["lesson_title"]
         lesson_url = ['lesson_url']
-        negativ = ['is_negative']
-    if negativ:
+        negative = ['is_negative']
+    if negative:
         message = f'''
     У вас проверили работу
     {lesson_title}
