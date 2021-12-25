@@ -11,33 +11,32 @@ from dotenv import load_dotenv
 
 def create_message(reply):
     for key, value in reply.items():
-      lesson_title = ["lesson_title"]
-      lesson_url = ['lesson_url']
-      negativ = ['is_negative']
+        lesson_title = ["lesson_title"]
+        lesson_url = ['lesson_url']
+        negativ = ['is_negative']
     if negativ:
-      message = f'''
+        message = f'''
     У вас проверили работу
     {lesson_title}
     К сожалению, в работе нашлись ошибки
     {lesson_url}
     '''
     else:
-      message = f'''
-    У вас проверили работу 
-    {lesson_title}
-    Преподавателю всё понравилось, можно приступать к следующему уроку
-    {lesson_url}
-    '''
+        message = f'''
+        У вас проверили работу
+{lesson_title}
+Преподавателю всё понравилось, можно приступать к следующему уроку
+{lesson_url}
+'''
     return message
-    
-    
+
+
 def get_timestamp(reply):
     if reply['status'] == 'found':
-       timestamp = reply['last_attempt_timestamp']
+        timestamp = reply['last_attempt_timestamp']
     elif reply['status'] == 'timeout':
-       timestamp = reply['timestamp_to_request']
+        timestamp = reply['timestamp_to_request']
     return timestamp
-       
 
 
 if __name__ == '__main__':
