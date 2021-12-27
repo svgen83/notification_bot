@@ -8,6 +8,8 @@ import time
 
 from dotenv import load_dotenv
 
+from textwrap import dedent
+
 
 def create_message(reply):
     new_attempts = reply['new_attempts']
@@ -17,19 +19,19 @@ def create_message(reply):
             lesson_url = new_attempt['lesson_url']
             negative = new_attempt['is_negative']
         if negative:
-            message = f'''
+            message = dedent(f'''
                     У вас проверили работу
                     {lesson_title}
                     К сожалению, в работе нашлись ошибки
                     {lesson_url}
-                    '''
+                    ''')
         else:
-            message = f'''
+            message = dedent(f'''
                      У вас проверили работу
                      {lesson_title}
                      Преподавателю всё понравилось, можно приступать     к следующему уроку
                      {lesson_url}
-                     '''
+                     ''')
     return message
 
 
