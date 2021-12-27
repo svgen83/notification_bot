@@ -10,26 +10,26 @@ from dotenv import load_dotenv
 
 
 def create_message(reply):
-    for key, value in reply.items():
-        new_attempts = reply['new_attempts']
-    for new_attempt in new_attempts.items():
-        lesson_title = ["lesson_title"]
-        lesson_url = ['lesson_url']
-        negative = ['is_negative']
-    if negative:
-        message = f'''
-    У вас проверили работу
-    {lesson_title}
-    К сожалению, в работе нашлись ошибки
-    {lesson_url}
-    '''
-    else:
-        message = f'''
-        У вас проверили работу
-{lesson_title}
-Преподавателю всё понравилось, можно приступать к следующему уроку
-{lesson_url}
-'''
+    new_attempts = reply['new_attempts']
+    for new_attempt in new_attempts:
+        for key, value in new_attempt.items():
+            lesson_title = new_attempt["lesson_title"]
+            lesson_url = new_attempt['lesson_url']
+            negative = new_attempt['is_negative']
+        if negative:
+            message = f'''
+                    У вас проверили работу
+                    {lesson_title}
+                    К сожалению, в работе нашлись ошибки
+                    {lesson_url}
+                    '''
+        else:
+            message = f'''
+                     У вас проверили работу
+                     {lesson_title}
+                     Преподавателю всё понравилось, можно приступать     к следующему уроку
+                     {lesson_url}
+                     '''
     return message
 
 
