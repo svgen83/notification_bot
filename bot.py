@@ -13,26 +13,28 @@ from textwrap import dedent
 
 def create_message(reply):
     new_attempts = reply['new_attempts']
+    messages = []
     for new_attempt in new_attempts:
         for key, value in new_attempt.items():
-            lesson_title = new_attempt["lesson_title"]
+            lesson_title = new_attempt['lesson_title']
             lesson_url = new_attempt['lesson_url']
             negative = new_attempt['is_negative']
-        if negative:
-            message = dedent(f'''
+            if negative:
+              message = dedent(f'''
                     У вас проверили работу
                     {lesson_title}
                     К сожалению, в работе нашлись ошибки
                     {lesson_url}
                     ''')
-        else:
-            message = dedent(f'''
+            else:
+              message = dedent(f'''
                      У вас проверили работу
                      {lesson_title}
                      Преподавателю всё понравилось, можно приступать     к следующему уроку
                      {lesson_url}
                      ''')
-    return message
+            messages.append(message)
+    return messages
 
 
 def get_timestamp(reply):
@@ -69,8 +71,9 @@ if __name__ == '__main__':
             reply = response.json()
             timestamp = get_timestamp(reply)
             params.update({"timestamp": timestamp})
-            message = create_message(reply)
-            bot.send_message(chat_id=TG_CHAT_ID, text=message)
+            messages = create_message(reply)
+            for message in messages:
+                bot.send_message(chat_id=TG_CHAT_ID, text=message)
         except requests.exceptions.ReadTimeout:
             time.sleep(timer)
         except requests.exceptions.ConnectionError:
