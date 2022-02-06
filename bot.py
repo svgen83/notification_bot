@@ -1,3 +1,5 @@
+import logging
+
 import os
 
 import requests
@@ -60,6 +62,9 @@ if __name__ == '__main__':
     timestamp = 0
     params = {}
     bot = telegram.Bot(token=TG_TOKEN)
+    
+    logging.basicConfig(level=logging.DEBUG)
+    logging.debug("Бот запущен")
 
     while True:
         try:
