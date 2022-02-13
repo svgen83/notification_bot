@@ -64,7 +64,6 @@ if __name__ == '__main__':
     bot = telegram.Bot(token=TG_TOKEN)
     
     logging.basicConfig(level=logging.DEBUG)
-    logging.debug("Бот запущен")
 
     while True:
         try:
@@ -73,6 +72,7 @@ if __name__ == '__main__':
                                     params=params,
                                     headers=headers)
             response.raise_for_status()
+            logging.debug("Бот запущен")
             reply = response.json()
             timestamp = get_timestamp(reply)
             params.update({"timestamp": timestamp})
