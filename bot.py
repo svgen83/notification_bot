@@ -107,5 +107,3 @@ if __name__ == '__main__':
         except requests.exceptions.ConnectionError:
             logger.error('Отсутствует интернет-подключение')
             time.sleep(timer)
-        except Exception:
-            logger.exception('Ошибка')
