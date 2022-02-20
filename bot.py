@@ -13,6 +13,17 @@ from dotenv import load_dotenv
 from textwrap import dedent
 
 
+class TelegramHandler(logging.Handler):
+
+    def emit(self, record):
+        log_entry = self.format(record)
+        bot = telegram.Bot(self.token=TG_TOKEN)
+        bot.send_message(
+            self.chat_id,
+            log_entry
+        )
+
+
 def create_messages(reply):
     new_attempts = reply['new_attempts']
     messages = []
@@ -63,8 +74,12 @@ if __name__ == '__main__':
     params = {}
     bot = telegram.Bot(token=TG_TOKEN)
     
-    logging.basicConfig(level=logging.WARNING)
-    logging.warning("Бот запущен")
+#   logging.basicConfig(level=logging.WARNING)
+#   logging.warning("Бот запущен")
+    logger = logging.getLogger('start_bot_logger')
+    logger.setLevel(logging.INFO)
+    logger.addHandler(TelegramHandler())
+    logger.info('Бот запущен')
 
     while True:
         try:
