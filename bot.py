@@ -84,12 +84,12 @@ if __name__ == '__main__':
     
     try:
         logger.info('Бот запущен')
-        a = 5/0
-    except Exception:
+    except requests.exceptions.ConnectionError:
         logger.exception('Ошибка')
 
     while True:
         try:
+            0/0
             response = requests.get(lp_url,
                                     timeout=timeout,
                                     params=params,
@@ -107,3 +107,5 @@ if __name__ == '__main__':
         except requests.exceptions.ConnectionError:
             logger.error('Отсутствует интернет-подключение')
             time.sleep(timer)
+        except Exception:
+            logger.exception('Ошибка')
