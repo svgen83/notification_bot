@@ -82,7 +82,7 @@ if __name__ == '__main__':
 #   logging.warning("Бот запущен")
     logger = logging.getLogger('start_bot_logger')
     logger.setLevel(logging.INFO)
-    logger.addHandler(TelegramHandler())
+    logger.addHandler(TelegramHandler(bot, TG_CHAT_ID))
     logger.info('Бот запущен')
 
     while True:
