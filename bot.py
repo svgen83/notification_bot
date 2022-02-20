@@ -85,7 +85,6 @@ if __name__ == '__main__':
 
     while True:
         try:
-            logger.info('Бот запущен')
             response = requests.get(lp_url,
                                     timeout=timeout,
                                     params=params,
