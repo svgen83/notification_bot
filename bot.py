@@ -80,11 +80,12 @@ if __name__ == '__main__':
     
     logger = logging.getLogger('bot_logger')
     logger.setLevel(logging.INFO)
-    logger.addHandler(TelegramHandler(bot, 'TG_CHAT_ID'))
+    logger.addHandler(TelegramHandler(bot, TG_CHAT_ID))
     
     try:
         logger.info('Бот запущен')
-    except requests.exceptions.ConnectionError:
+        a = 5/0
+    except requests.exceptions:
         logger.error('Ошибка запуска')
 
     while True:
