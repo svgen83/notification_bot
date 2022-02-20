@@ -78,9 +78,7 @@ if __name__ == '__main__':
     params = {}
     bot = telegram.Bot(token=TG_TOKEN)
     
-#   logging.basicConfig(level=logging.WARNING)
-#   logging.warning("Бот запущен")
-    logger = logging.getLogger('start_bot_logger')
+    logger = logging.getLogger('bot_logger')
     logger.setLevel(logging.INFO)
     logger.addHandler(TelegramHandler(bot, TG_CHAT_ID))
     logger.info('Бот запущен')
@@ -102,5 +100,5 @@ if __name__ == '__main__':
         except requests.exceptions.ReadTimeout:
             pass
         except requests.exceptions.ConnectionError:
-            print("Отсутствует интернет-подключение")
+            logger.error('Отсутствует интернет-подключение')
             time.sleep(timer)
