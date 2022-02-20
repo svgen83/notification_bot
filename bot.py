@@ -85,8 +85,8 @@ if __name__ == '__main__':
     try:
         logger.info('Бот запущен')
         a = 5/0
-    except requests.exceptions:
-        logger.error('Ошибка запуска')
+    except Exception:
+        logger.exception('Ошибка')
 
     while True:
         try:
