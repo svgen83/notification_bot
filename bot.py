@@ -78,9 +78,9 @@ if __name__ == '__main__':
     params = {}
     bot = telegram.Bot(token=TG_TOKEN)
     
+    logging.basicConfig(format='%(asctime)s %(process)d %(levelname)s %(message)s')
     logger = logging.getLogger('bot_logger')
     logger.setLevel(logging.INFO)
-    logger.basicConfig(format='%(asctime)s %(process)d %(levelname)s %(message)s')
     logger.addHandler(TelegramHandler(bot, TG_CHAT_ID))
     
     try:
