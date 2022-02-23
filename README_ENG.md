@@ -37,6 +37,8 @@ python bot.py
 ```
 When the result of the verification of the work appears, a message about this will come to your telegram.
 
+To run the program from the server, you must first acquire a server. The following is an example of running on a Heroku virtual server. The first step is to register on the [Heroku website](https://heroku.com) and create an app. You can submit the code from GitHub. After linking your GitHub account to Heroku, you should find the repository with the code and connect it to Heroku. The token and chat-id should be specified in the Config Vars section in the Settings tab. Click the "Deploy Branch" button.
+
 ### Project goal
 
 The code is written for educational purposes in an online course for web developers [dvmn.org](https://dvmn.org/).
