@@ -80,8 +80,15 @@ if __name__ == '__main__':
     
     logger = logging.getLogger('bot_logger')
     logger.setLevel(logging.INFO)
+    logger.basicConfig(format='%(asctime)s %(process)d %(levelname)s %(message)s')
     logger.addHandler(TelegramHandler(bot, TG_CHAT_ID))
     
+    try:
+        logger.info('Бот запущен')
+    except requests.exceptions.ConnectionError:
+        logger.error('Отсутствие интернет-подключения')
+        time.sleep(timer)
+
 
     while True:
         try:
@@ -102,4 +109,3 @@ if __name__ == '__main__':
         except requests.exceptions.ConnectionError:
             logger.error('Отсутствует интернет-подключение')
             time.sleep(timer)
-            
