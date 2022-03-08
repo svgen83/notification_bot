@@ -1,22 +1,18 @@
 import logging
-
-logger = logging.getLogger('bot_logger')
-
 import os
-
 import requests
-
 import telegram
-
 import time
 
 from dotenv import load_dotenv
-
 from textwrap import dedent
 
 
+logger = logging.getLogger('bot_logger')
+
+
 class TelegramHandler(logging.Handler):
-    
+
     def __init__(self, bot, chat_id):
         super().__init__()
         self.chat_id = chat_id
@@ -48,7 +44,7 @@ def create_messages(reply):
             message = dedent(f'''
                      У вас проверили работу
                      {lesson_title}
-                     Преподавателю всё понравилось, 
+                     Преподавателю всё понравилось,
                      можно приступать к следующему уроку
                      {lesson_url}
                      ''')
@@ -79,11 +75,11 @@ if __name__ == '__main__':
     timestamp = 0
     params = {}
     bot = telegram.Bot(token=TG_TOKEN)
-    
+
     logging.basicConfig(format='%(asctime)s %(process)d %(levelname)s %(message)s')
     logger.setLevel(logging.INFO)
     logger.addHandler(TelegramHandler(bot, TG_CHAT_ID))
-    
+
     logger.info('Бот запущен')
 
     while True:
